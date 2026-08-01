@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const cron = require('node-cron');
+// const cron = require('node-cron'); // Desactivado temporalmente
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const pool = require('./db');
@@ -15,7 +15,7 @@ app.use(express.json());
 app.post('/api/admin/login', async (req, res) => {
   try {
     const { telefono, password } = req.body;
-    const [rows] = await pool.query('SELECT * FROM usuarios WHERE telefono=? AND rol="admin"', [telefono]);
+    const [rows] = await pool.query("SELECT * FROM usuarios WHERE telefono=? AND rol='admin'", [telefono]);
     if (rows.length === 0) return res.status(401).json({ error: 'Usuario no encontrado' });
 
     const valido = await bcrypt.compare(password, rows[0].password);
@@ -115,7 +115,7 @@ app.get('/api/admin/turnos', verificarToken, async (req, res) => {
 
 // ---------- ADMIN: CAMBIAR ESTADO DE TURNO (flexible) ----------
 app.put('/api/admin/turnos/:id/estado', verificarToken, async (req, res) => {
-  const { estado } = req.body; // 'pendiente','confirmado','realizado','cancelado','no_asistio'
+  const { estado } = req.body;
   await pool.query('UPDATE turnos SET estado=? WHERE id=?', [estado, req.params.id]);
   res.json({ ok: true });
 });
@@ -164,14 +164,14 @@ app.delete('/api/admin/servicios/:id', verificarToken, async (req, res) => {
   res.json({ ok: true });
 });
 
-// ---------- RECORDATORIO AUTOMÁTICO 15 MIN ANTES ----------
+/* ---------- RECORDATORIO AUTOMÁTICO 15 MIN ANTES (DESACTIVADO TEMPORALMENTE) ----------
 cron.schedule('* * * * *', async () => {
   try {
     const ahora = new Date();
     const en15 = new Date(ahora.getTime() + 15 * 60000);
 
     const fecha = en15.toISOString().slice(0, 10);
-    const horaInicio = en15.toTimeString().slice(0, 5); // HH:MM
+    const horaInicio = en15.toTimeString().slice(0, 5);
     const horaFin = new Date(en15.getTime() + 60000).toTimeString().slice(0, 5);
 
     const [turnos] = await pool.query(
@@ -195,5 +195,6 @@ cron.schedule('* * * * *', async () => {
     console.log('Error en recordatorio automático:', error);
   }
 });
+*/
 
 app.listen(process.env.PORT, () => console.log(`Servidor Exotic corriendo en puerto ${process.env.PORT}`));
