@@ -1,0 +1,162 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+body { background: #0a0a0a; color: #f5f5f5; min-height: 100vh; }
+h1 { font-family: 'Bebas Neue', sans-serif; }
+h1 span { color: #d4af37; }
+
+.login-box {
+  max-width: 360px; margin: 100px auto; background: #161616;
+  padding: 40px; border-radius: 16px; border: 1px solid #262626;
+  text-align: center; display: flex; flex-direction: column; gap: 14px;
+}
+.login-box p { color: #999; margin-bottom: 10px; }
+.login-box input {
+  padding: 12px; border-radius: 8px; border: 1px solid #333;
+  background: #232323; color: #fff; font-size: 0.95rem;
+}
+.login-box button {
+  background: #d4af37; color: #000; padding: 12px; border-radius: 8px;
+  border: none; font-weight: 600; cursor: pointer; transition: 0.3s;
+}
+.login-box button:hover { background: #f0c869; }
+#errorLogin { color: #ff5555; font-size: 0.85rem; }
+
+.panel-box { padding: 30px 4%; max-width: 1100px; margin: 0 auto; }
+.panel-header {
+  display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;
+  flex-wrap: wrap; gap: 12px;
+}
+.panel-header-left { display: flex; align-items: center; gap: 16px; }
+.btn-volver {
+  color: #999; text-decoration: none; font-size: 0.85rem;
+  border: 1px solid #333; padding: 6px 14px; border-radius: 20px; transition: 0.3s;
+}
+.btn-volver:hover { color: #d4af37; border-color: #d4af37; }
+.btn-salir {
+  background: transparent; border: 1px solid #444; color: #ccc;
+  padding: 8px 16px; border-radius: 20px; cursor: pointer; transition: 0.3s;
+}
+.btn-salir:hover { border-color: #d4af37; color: #d4af37; }
+
+.resumen {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px; margin-bottom: 24px;
+}
+.card-resumen {
+  background: #161616; border: 1px solid #262626; border-radius: 12px;
+  padding: 20px; text-align: center;
+}
+.card-resumen strong { display: block; font-size: 1.6rem; color: #d4af37; font-family: 'Bebas Neue', sans-serif; }
+.card-resumen span { color: #888; font-size: 0.8rem; }
+
+.turnos-panel { margin-top: 40px; }
+.turnos-panel .section-tag,
+.admin-servicios .section-tag {
+  color: #d4af37; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 3px; text-align: center; display: block;
+}
+.turnos-panel h2,
+.admin-servicios h2 {
+  font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: #fff; margin: 8px 0 24px; text-align: center;
+}
+
+.filtros { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
+.filtro-btn {
+  background: #161616; border: 1px solid #333; color: #ccc;
+  padding: 8px 18px; border-radius: 20px; cursor: pointer; font-size: 0.85rem; transition: 0.3s;
+}
+.filtro-btn:hover { border-color: #d4af37; }
+.filtro-btn.activo { background: #d4af37; color: #000; border-color: #d4af37; }
+
+.filtro-fecha {
+  display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; align-items: center; justify-content: center;
+}
+.filtro-fecha select {
+  background: #161616; border: 1px solid #333; color: #fff;
+  padding: 8px 14px; border-radius: 8px; font-size: 0.85rem;
+}
+.btn-aplicar {
+  background: #d4af37; color: #000; border: none;
+  padding: 8px 18px; border-radius: 8px; cursor: pointer; font-weight: 600; transition: 0.3s;
+}
+.btn-aplicar:hover { background: #f0c869; }
+
+table { width: 100%; border-collapse: collapse; background: #161616; border-radius: 12px; overflow: hidden; }
+th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid #222; font-size: 0.9rem; }
+th { background: #1c1c1c; color: #d4af37; text-transform: uppercase; font-size: 0.75rem; }
+tr:hover { background: #1a1a1a; }
+
+table select {
+  background: #232323; border: 1px solid #333; color: #fff;
+  padding: 6px 10px; border-radius: 6px; font-size: 0.8rem;
+}
+
+.celda-acciones { display: flex; gap: 8px; align-items: center; }
+.btn-eliminar-turno {
+  background: #ff5555; color: #fff; border: none; padding: 6px 10px;
+  border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: 0.3s;
+}
+.btn-eliminar-turno:hover { background: #ff2222; }
+
+.estado-badge {
+  padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600;
+}
+.estado-agendado { background: rgba(212,175,55,0.15); color: #d4af37; }
+.estado-pendiente { background: rgba(255,193,7,0.15); color: #ffc107; }
+.estado-confirmado { background: rgba(33,150,243,0.15); color: #2196f3; }
+.estado-realizado { background: rgba(76,175,80,0.15); color: #4caf50; }
+.estado-cancelado { background: rgba(255,85,85,0.15); color: #ff5555; }
+.estado-no_asistio { background: rgba(153,153,153,0.15); color: #999; }
+
+@media (max-width: 700px) {
+  table { display: block; overflow-x: auto; white-space: nowrap; }
+}
+
+.btn-volver-login {
+  color: #999; text-decoration: none; font-size: 0.8rem; margin-bottom: 6px;
+}
+.btn-volver-login:hover { color: #d4af37; }
+
+.admin-servicios {
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid #222;
+  text-align: center;
+}
+.admin-servicios .btn-cta {
+  background: #d4af37; color: #000; border: none; padding: 12px 28px;
+  border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.3s; margin-bottom: 24px;
+}
+.admin-servicios .btn-cta:hover { background: #f0c869; }
+
+.form-servicio {
+  display: flex; flex-direction: column; gap: 12px; max-width: 400px;
+  background: #161616; border: 1px solid #262626; padding: 20px; border-radius: 12px;
+  margin: 0 auto 30px;
+}
+.form-servicio input {
+  padding: 10px 14px; border-radius: 8px; border: 1px solid #333;
+  background: #232323; color: #fff; font-size: 0.9rem;
+}
+
+.grid-servicios-admin {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;
+  max-width: 1000px; margin: 0 auto; text-align: left;
+}
+.servicio-admin-card {
+  background: #161616; border: 1px solid #262626; border-radius: 12px; padding: 16px; text-align: center;
+}
+.servicio-admin-card img {
+  width: 100%; height: 120px; object-fit: cover; border-radius: 8px; margin-bottom: 10px;
+}
+.servicio-admin-card h4 { color: #d4af37; margin-bottom: 6px; }
+.servicio-admin-card p { color: #999; font-size: 0.85rem; margin-bottom: 12px; }
+.servicio-admin-acciones { display: flex; gap: 8px; justify-content: center; }
+.btn-desactivar {
+  background: #333; color: #fff; border: none; padding: 6px 14px;
+  border-radius: 6px; cursor: pointer; font-size: 0.8rem; transition: 0.3s;
+}
+.btn-desactivar:hover { background: #555; }
+.btn-eliminar {
+  background: #ff5555; color: #fff; border: none; padding: 6px 14px;
+  border-radius: 6px; cursor: pointer; font-size: 0.8rem; transition: 0.3s;
+}
+.btn-eliminar:hover { background: #ff2222; }

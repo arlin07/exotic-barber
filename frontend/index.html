@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exotic Barbería | Agenda tu turno</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo">EXOTIC<span>.</span></div>
+  <div class="nav-links">
+    <a href="#servicios">Servicios</a>
+    <a href="#galeria">Galería</a>
+    <a href="#testimonios">Clientes</a>
+    <a href="#faq">Preguntas</a>
+    <a href="admin.html" class="link-admin">Admin</a>
+  </div>
+  <a href="#agendar" class="btn-nav">Reservar</a>
+</nav>
+
+<header class="hero" style="background-image: url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=1920');">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-tag">Barbería Premium · Bogotá</p>
+    <h1>Estilo que <span>define</span> carácter</h1>
+    <p class="hero-desc">Cortes exclusivos, atención personalizada y agenda 100% online. Reserva tu turno en menos de 1 minuto.</p>
+    <div class="hero-buttons">
+      <a href="#agendar" class="btn-cta">Agendar mi turno →</a>
+      <a href="#servicios" class="btn-outline">Ver servicios</a>
+    </div>
+  </div>
+</header>
+
+<section class="stats fade-in">
+  <div class="stat"><strong>7+</strong><span>Años de experiencia</span></div>
+  <div class="stat"><strong>+2,500</strong><span>Cortes realizados</span></div>
+  <div class="stat"><strong>4.9★</strong><span>Calificación promedio</span></div>
+  <div class="stat"><strong>+500</strong><span>Clientes fieles</span></div>
+</section>
+
+<section class="about fade-in">
+  <div class="about-text">
+    <p class="section-tag">Nuestra historia</p>
+    <h2>Más que un corte, una experiencia</h2>
+    <p>En Exotic combinamos técnica clásica con tendencias actuales. Cada cliente recibe atención personalizada, herramientas de precisión y un espacio pensado para relajarte mientras te transformamos el look.</p>
+    <ul class="about-list">
+      <li>✔ Productos premium en cada servicio</li>
+      <li>✔ Barberos certificados con años de trayectoria</li>
+      <li>✔ Ambiente cómodo y puntualidad garantizada</li>
+    </ul>
+  </div>
+  <div class="about-badge">
+    <div class="badge-circle">100%<span>Satisfacción</span></div>
+  </div>
+</section>
+
+<section class="servicios fade-in" id="servicios">
+  <p class="section-tag">Lo que ofrecemos</p>
+  <h2>Nuestros cortes</h2>
+  <div id="listaServicios" class="grid-servicios"></div>
+</section>
+
+<section class="galeria fade-in" id="galeria">
+  <p class="section-tag">Nuestro trabajo</p>
+  <h2>Galería de estilos</h2>
+  <div class="grid-galeria">
+    <div class="foto-card" style="background-image:url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=600')"></div>
+    <div class="foto-card" style="background-image:url('https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=600')"></div>
+    <div class="foto-card" style="background-image:url('https://images.unsplash.com/photo-1622286342621-4bd786c2447c?q=80&w=600')"></div>
+    <div class="foto-card" style="background-image:url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=600')"></div>
+  </div>
+</section>
+
+<section class="testimonios fade-in" id="testimonios">
+  <p class="section-tag">Lo que dicen de nosotros</p>
+  <h2>Clientes satisfechos</h2>
+  <div class="grid-testimonios">
+    <div class="testimonio-card">
+      <p>"El mejor corte que me han hecho en Bogotá, la agenda online es súper fácil de usar."</p>
+      <strong>— Camilo R.</strong>
+    </div>
+    <div class="testimonio-card">
+      <p>"Puntualidad, buena atención y resultados excelentes. Ya soy cliente fijo."</p>
+      <strong>— Andrés M.</strong>
+    </div>
+    <div class="testimonio-card">
+      <p>"Me encantó que me llegó el recordatorio por WhatsApp antes de mi cita."</p>
+      <strong>— Felipe G.</strong>
+    </div>
+  </div>
+</section>
+
+<section class="agendar fade-in" id="agendar">
+  <p class="section-tag">Reserva ahora</p>
+  <h2>Agenda tu turno</h2>
+  <form id="formTurno">
+    <div class="input-group">
+      <label>Nombre completo</label>
+      <input type="text" id="nombre" placeholder="Ej: Juan Pérez" required>
+    </div>
+    <div class="input-group">
+      <label>WhatsApp</label>
+      <input type="tel" id="telefono" placeholder="Ej: 573001234567" required>
+    </div>
+    <div class="input-group">
+      <label>Servicio</label>
+      <select id="servicio_id" required></select>
+    </div>
+    <div class="row-double">
+      <div class="input-group">
+        <label>Fecha</label>
+        <input type="date" id="fecha" required onchange="cargarHorasDisponibles()">
+      </div>
+      <div class="input-group">
+        <label>Hora</label>
+        <select id="hora" required>
+          <option value="">Selecciona una fecha primero</option>
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="btn-cta full">Confirmar turno</button>
+  </form>
+  <p id="mensajeConfirmacion"></p>
+</section>
+
+<section class="faq fade-in" id="faq">
+  <p class="section-tag">Dudas frecuentes</p>
+  <h2>Preguntas frecuentes</h2>
+  <div class="faq-list">
+    <details><summary>¿Puedo cancelar mi turno?</summary><p>Sí, escríbenos por WhatsApp con al menos 2 horas de anticipación.</p></details>
+    <details><summary>¿Aceptan pagos con tarjeta?</summary><p>Sí, aceptamos efectivo, tarjeta y pagos por transferencia.</p></details>
+    <details><summary>¿Debo llegar antes de mi hora?</summary><p>Recomendamos llegar 5 minutos antes para no perder tu espacio en la agenda.</p></details>
+    <details><summary>¿Recibiré confirmación de mi cita?</summary><p>Sí, te llega un mensaje de WhatsApp al agendar y un recordatorio 15 minutos antes.</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">EXOTIC<span>.</span></div>
+  <p>💈 Barbería Premium — Bogotá, Colombia</p>
+  <p class="footer-sub">Agenda tu turno cuando quieras, atendemos todos los días.</p>
+  <p class="footer-sub"><a href="admin.html" style="color:#666;">Acceso administrador</a></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

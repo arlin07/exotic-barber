@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Exotic - Panel Admin</title>
+<link rel="stylesheet" href="admin.css">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="loginBox" class="login-box">
+  <h1>💈 EXOTIC<span>.</span></h1>
+  <p>Panel del administrador</p>
+  <a href="index.html" class="btn-volver-login">← Volver al sitio</a>
+  <input type="tel" id="telefono" placeholder="Teléfono">
+  <input type="password" id="password" placeholder="Contraseña">
+  <button onclick="login()">Ingresar</button>
+  <p id="errorLogin"></p>
+</div>
+
+<div id="panelBox" class="panel-box" style="display:none">
+  <header class="panel-header">
+    <div class="panel-header-left">
+      <a href="index.html" class="btn-volver">← Volver al sitio</a>
+      <h1>EXOTIC<span>.</span> Admin</h1>
+    </div>
+    <button onclick="logout()" class="btn-salir">Cerrar sesión</button>
+  </header>
+
+  <div class="resumen">
+    <div class="card-resumen"><strong id="totalAgendados">0</strong><span>Agendados</span></div>
+    <div class="card-resumen"><strong id="totalRealizados">0</strong><span>Realizados</span></div>
+    <div class="card-resumen"><strong id="totalCancelados">0</strong><span>Cancelados</span></div>
+    <div class="card-resumen"><strong id="totalIngresos">$0</strong><span>Ingresos (realizados)</span></div>
+  </div>
+
+  <section class="turnos-panel">
+    <p class="section-tag">Gestión de citas</p>
+    <h2>Turnos agendados</h2>
+
+    <div class="filtros">
+      <button class="filtro-btn activo" onclick="filtrar('todos')">Todos</button>
+      <button class="filtro-btn" onclick="filtrar('agendado')">Agendados</button>
+      <button class="filtro-btn" onclick="filtrar('pendiente')">Pendientes</button>
+      <button class="filtro-btn" onclick="filtrar('confirmado')">Confirmados</button>
+      <button class="filtro-btn" onclick="filtrar('realizado')">Realizados</button>
+      <button class="filtro-btn" onclick="filtrar('cancelado')">Cancelados</button>
+      <button class="filtro-btn" onclick="filtrar('no_asistio')">No asistió</button>
+    </div>
+
+    <div class="filtro-fecha">
+      <select id="filtroMes">
+        <option value="">Todos los meses</option>
+        <option value="1">Enero</option><option value="2">Febrero</option><option value="3">Marzo</option>
+        <option value="4">Abril</option><option value="5">Mayo</option><option value="6">Junio</option>
+        <option value="7">Julio</option><option value="8">Agosto</option><option value="9">Septiembre</option>
+        <option value="10">Octubre</option><option value="11">Noviembre</option><option value="12">Diciembre</option>
+      </select>
+      <select id="filtroAnio">
+        <option value="">Todos los años</option>
+        <option value="2025">2025</option><option value="2026">2026</option><option value="2027">2027</option>
+      </select>
+      <button onclick="aplicarFiltroFecha()" class="btn-aplicar">Aplicar filtro</button>
+    </div>
+
+    <table id="tablaTurnos">
+      <thead>
+        <tr><th>Cliente</th><th>WhatsApp</th><th>Servicio</th><th>Precio</th><th>Fecha</th><th>Hora</th><th>Estado</th><th>Acción</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <section class="admin-servicios" id="gestion-servicios">
+    <p class="section-tag">Panel de control</p>
+    <h2>Gestionar servicios</h2>
+    <button onclick="mostrarFormServicio()" class="btn-cta">+ Nuevo servicio</button>
+
+    <div id="formServicioBox" class="form-servicio" style="display:none;">
+      <input id="srvNombre" placeholder="Nombre del corte">
+      <input id="srvDescripcion" placeholder="Descripción">
+      <input id="srvPrecio" type="number" placeholder="Precio">
+      <input id="srvDuracion" type="number" placeholder="Duración (min)">
+      <input id="srvFoto" placeholder="URL de la foto">
+      <button onclick="guardarServicio()" class="btn-cta">Guardar servicio</button>
+    </div>
+
+    <div id="listaServiciosAdmin" class="grid-servicios-admin"></div>
+  </section>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>
